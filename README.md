@@ -1,16 +1,8 @@
-# my_notes_app
+- Complete Notes App with the all features
+- like add , update and delete note and clear all notes
+- there are sections for each note
 
-A new Flutter project.
 
-## Getting Started
+* the system design for the app :
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![image](https://github.com/user-attachments/assets/e3f700d7-852d-4dd0-a197-e7855499f7af)
