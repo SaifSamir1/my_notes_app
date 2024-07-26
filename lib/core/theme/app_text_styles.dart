@@ -7,15 +7,15 @@ abstract class AppTextStyle {
     color: Colors.black,
     fontWeight: FontWeight.w600,
   );
-  static TextStyle font18BlackWeight600 = TextStyle(
+  static TextStyle font18BlackBold = TextStyle(
     fontSize: 18.sp,
     color: Colors.black,
-    fontWeight: FontWeight.w600,
+    fontWeight: FontWeight.bold,
   );
-  static TextStyle font24BlackWeight400 = TextStyle(
-    fontSize: 24.sp,
+  static TextStyle font26BlackBold = TextStyle(
+    fontSize: 26.sp,
     color: Colors.black,
-    fontWeight: FontWeight.w400,
+    fontWeight: FontWeight.bold,
   );
   static TextStyle font18BlackWeight400 = TextStyle(
     fontSize: 18.sp,
@@ -27,10 +27,10 @@ abstract class AppTextStyle {
     color: Colors.black,
     fontWeight: FontWeight.w400,
   );
-  static TextStyle font16BlackWeight600 = TextStyle(
+  static TextStyle font16BlackBold = TextStyle(
     fontSize: 16.sp,
     color: Colors.black,
-    fontWeight: FontWeight.w600,
+    fontWeight: FontWeight.bold,
   );
 
   static TextStyle font22BlackWeight600 = TextStyle(
