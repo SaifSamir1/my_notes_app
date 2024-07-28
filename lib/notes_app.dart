@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:my_notes_app/core/routing/app_router.dart';
 
+import 'features/home/logic/notes_cubit.dart';
+
 class NotesApp extends StatelessWidget {
   const NotesApp({super.key, required this.appRouter});
+
   final AppRouter appRouter;
+
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark.copyWith(
@@ -18,9 +23,12 @@ class NotesApp extends StatelessWidget {
         value: const SystemUiOverlayStyle(
           statusBarColor: Colors.transparent, // Set your desired color here
         ),
-        child: MaterialApp(
-          debugShowCheckedModeBanner: false,
-          onGenerateRoute: appRouter.generateRoute,
+        child: BlocProvider<NotesCubit>(
+          create: (context) => NotesCubit()..fetchAllNotes(),
+          child: MaterialApp(
+            debugShowCheckedModeBanner: false,
+            onGenerateRoute: appRouter.generateRoute,
+          ),
         ),
       ),
     );

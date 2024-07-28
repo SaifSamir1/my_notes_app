@@ -1,45 +1,34 @@
 
-import 'dart:developer';
-
 import 'package:hive/hive.dart';
-import 'package:my_notes_app/features/home/data/models/note_model.dart';
+import '../../../features/add_note/data/models/note_model.dart';
+import 'package:path_provider/path_provider.dart';
 
 class HiveHelpers {
   static const String notesBox = 'MyNotes';
-  static const String notesBoxKey = 'notesBoxKey';
-  static var box = Hive.box(notesBox);
+  static var box = Hive.box<NoteModel>(notesBox);
+  static const String getStarted = 'getStarted';
 
   static List<NoteModel> noteList = [];
 
   // Add a note
-  static void addNote(NoteModel note) {
+  static Future<void> addNote(NoteModel note) async{
+    await box.add(note);
     noteList.add(note);
-    box.put(notesBoxKey, noteList);
-    log(box.get(notesBoxKey));
   }
 
-  // Get all notes
-  static Future<void> getAllNotes() async {
-    if (box.get(notesBoxKey) != null) {
-      noteList = await box.get(notesBoxKey);
+  static Box? myBox;
+
+
+  static Future<Box> openHiveBox(String boxName) async
+  {
+//كدا انا بقوله لو هو مفتوح خد ال path وروح اعمله init
+    if(!Hive.isBoxOpen(boxName))
+    {
+      Hive.init((await getApplicationDocumentsDirectory()).path);
     }
+    //لو لا يبقي روح افتحه
+    return await Hive.openBox(boxName);
+
   }
 
-  // Remove a note
-  static void removeNote(int index) {
-    noteList.removeAt(index);
-    box.put(notesBoxKey, noteList);
-  }
-
-  // Clear all notes
-  static void clearAll() {
-    noteList.clear();
-    box.put(notesBoxKey, noteList);
-  }
-
-  // Update a note
-  static void updateNote(int index, NoteModel note) {
-    noteList[index] = note;
-    box.put(notesBoxKey, noteList);
-  }
 }

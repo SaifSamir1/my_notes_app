@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_notes_app/core/database/cache/hive_helper.dart';
 import 'package:my_notes_app/core/utils/extensions.dart';
 
 import '../../../../core/routing/routes.dart';
@@ -30,6 +31,7 @@ void navigationViaButton(
         curve: Curves.easeOutCirc,
       );
     } else  {
+    HiveHelpers.myBox!.put("login", true);
     context.pushReplacementNamed(Routes.homePage);
   }
 }
