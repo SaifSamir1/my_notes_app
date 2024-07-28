@@ -36,7 +36,8 @@ class NotesCubit extends Cubit<NotesState> {
   deleteNotes(NoteModel note,index) {
     note.delete();
     notes!.removeAt(index);
-    emit(DeleteNoteSuccess());
+    currentNotes!.removeAt(index);
+    fetchAllNotes();
   }
   void removeFromFavorite(NoteModel note, int index) {
     note.isFavorite = false;
